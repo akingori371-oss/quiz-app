@@ -1,3 +1,4 @@
+import random
 questions = [
     {
         "question": "What is the capital of Kenya?",
@@ -76,22 +77,31 @@ questions = [
         "answer": "B"
     }
 ]
+random.shuffle(questions)
+
 total = 0
 
 for item in questions:
     print(item["question"])
-    print(item["choices"])
 
-    ques = input("Your answer: ")
+    for letter, choices in item["choices"].items():
+        print(letter, choices)
 
-    if ques == item["answer"]:
+    que = input("Your answer: ")
+
+    if que == item["answer"]:
         total += 1
-        print("Correct")
-
+        print("Correct choice")
     else:
-        print("Your answer is wrong sadly")
-        
-    
-        print("Your final score" ,total)
+        print("The answer is wrong")
+
+print("Your total score is", total)
+
+if total >= 6:
+    print("Excellent")
+elif total >= 4:
+    print("Good")
+else:
+    print("Try again")
         
   
